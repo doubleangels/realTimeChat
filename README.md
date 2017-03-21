@@ -1,4 +1,7 @@
 # realTimeChat
+
+[Imgur](http://i.imgur.com/pXyYLpb.png)
+
 Real time command line chat using PHP.
 This project uses [PubNub](https://admin.pubnub.com/#/user/317426/account/317421/app/35042591/key/270075/) (SDK located [here](https://github.com/pubnub/php)).
 (Note: The data sent by this application is not encrypted, so be aware of this.)
