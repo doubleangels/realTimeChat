@@ -1,8 +1,11 @@
 #!/usr/local/bin/php
 
 <?php
+// Require in composer and config dependencies.
 require 'vendor/autoload.php';
 $ini = parse_ini_file('config.ini');
+
+// Set namespace and start a new Pubnub instance.
 use Pubnub\Pubnub;
 $pubnub = new Pubnub(
     $ini['publish_key'],
@@ -10,6 +13,11 @@ $pubnub = new Pubnub(
     $ini['secret_key'],
     false
 );
+
+// Prompt user for chat room choice and username.
+// Connect to chosen room, get a list of usernames 
+// in that room, and make sure the chosen username 
+// isn't already taken.
 fwrite(STDOUT, "Join room: ");
 $room = trim(fgets(STDIN));
 $hereNow = $pubnub->hereNow($room, false, true);
@@ -28,6 +36,9 @@ function connectAs() {
 $username = connectAs();
 $pubnub->setState($room, ['username' => $username]);
 fwrite(STDOUT, "\nConnected to  '{$room}' as '{$username}'.\n");
+
+// Constantly check for messages to be sent or recieved.
+// If found, display it to the user with the sender and timestamp information.
 $pid = pcntl_fork();
 if ($pid == -1) {
     exit(1);
