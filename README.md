@@ -1,5 +1,7 @@
 # realTimeChat
 
+**Warning: This repository is not currently maintained, please use at your own risk!**
+
 ![Imgur](http://i.imgur.com/RiWpk7Z.png)
 
 Real time command line chat using PHP.
